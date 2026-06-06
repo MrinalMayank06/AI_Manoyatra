@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import SpecialityMenu from '../components/SpecialityMenu'
 import TopMentors from '../components/TopMentors'
@@ -7,6 +7,22 @@ import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const navigate = useNavigate()
+  const [showPopup, setShowPopup] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem("manoyatra_token")
+    if (token) {
+      const dismissed = localStorage.getItem("manoyatra_popup_dismissed")
+      if (!dismissed) {
+        setShowPopup(true)
+      }
+    }
+  }, [])
+
+  const dismissPopup = () => {
+    setShowPopup(false)
+    localStorage.setItem("manoyatra_popup_dismissed", "true")
+  }
 
   return (
     <div>
@@ -14,6 +30,73 @@ const Home = () => {
       <SpecialityMenu />
       <TopMentors />
       <Banner />
+
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn">
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden animate-slideUp">
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-600 to-emerald-600"></div>
+            
+            <button
+              onClick={dismissPopup}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10"
+            >
+              <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="p-6 md:p-8">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                </svg>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-900 text-center mb-3">
+                Welcome to Manoyatra
+              </h2>
+              
+              <div className="space-y-3 text-sm text-gray-600 mb-6">
+                <div className="flex items-start gap-2.5">
+                  <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <p>Use <span className="font-semibold text-gray-800">Mano AI</span> for instant mental wellness support. Our AI assistant provides guidance for stress, anxiety, sleep issues, and more.</p>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p>We apologize, but <span className="font-semibold text-gray-800">mentor booking is currently unavailable</span> as this is a prototype platform. The mentor listing is for demonstration purposes only.</p>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p>All features including <span className="font-semibold text-gray-800">payment processing</span> and <span className="font-semibold text-gray-800">live sessions</span> will be available in the upcoming production release.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2.5">
+                <button
+                  onClick={() => { dismissPopup(); navigate('/manoai'); }}
+                  className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold py-3 rounded-xl hover:shadow-lg transition-all text-sm"
+                >
+                  Try Mano AI Assistant Now
+                </button>
+                <button
+                  onClick={dismissPopup}
+                  className="w-full border border-gray-300 text-gray-700 font-medium py-2.5 rounded-xl hover:bg-gray-50 transition-all text-sm"
+                >
+                  Continue to Home
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       
       <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
