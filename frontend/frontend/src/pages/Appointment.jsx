@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { APPContext } from '../context/APPContext'
+import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import RelatedMentors from '../components/RelatedMentors'
 
 const Appointment = () => {
   const { mentorId } = useParams()
   const navigate = useNavigate()
-  const { mentors, currencySymbol } = useContext(APPContext)
+  const { mentors, currencySymbol } = useContext(AppContext)
   const [mentorInfo, setMentorInfo] = useState(null)
   const [mentorSlots, setMentorSlots] = useState([])
   const [slotIndex, setSlotIndex] = useState(0)

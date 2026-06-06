@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { APPContext } from '../context/APPContext'
+import { AppContext } from '../context/AppContext'
 
 const Mentors = () => {
   const { speciality } = useParams()
   const [filterMentors, setFilterMentors] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
-  const { mentors } = useContext(APPContext)
+  const { mentors } = useContext(AppContext)
 
   const specialties = [
     'Psychiatrist',

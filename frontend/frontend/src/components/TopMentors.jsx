@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { APPContext } from "../context/APPContext";
+import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 
 const TopMentors = () => {
   const navigate = useNavigate();
-  const { mentors, currencySymbol } = useContext(APPContext);
+  const { mentors, currencySymbol } = useContext(AppContext);
 
   const ratingStars = (rating) => {
     return (

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
-import { APPContext } from '../context/APPContext'
+import { AppContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 
 const MyAppointments = () => {
-  const { mentors, currencySymbol } = useContext(APPContext)
+  const { mentors, currencySymbol } = useContext(AppContext)
   const navigate = useNavigate()
   const [appointments, setAppointments] = useState([
     {

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { APPContext } from "../context/APPContext";
+import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
 const TopMentors = () => {
   const navigate = useNavigate();
-  const { mentors } = useContext(APPContext);
+  const { mentors } = useContext(AppContext);
 
   // ✅ Corrected array so Saturday shows
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -51,3 +51,4 @@ const TopMentors = () => {
 };
 
 export default TopMentors;
+
