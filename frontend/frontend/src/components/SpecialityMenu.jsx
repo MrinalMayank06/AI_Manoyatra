@@ -40,8 +40,8 @@ const SpecialityMenu = () => {
                             <div className='absolute -top-10 -right-10 w-20 h-20 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700'></div>
                             
                             <div className='relative z-10'>
-                                <div className='w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500'>
-                                    <img className='w-10 h-10 filter brightness-0 invert' src={item.image} alt={item.speciality} />
+                                <div className='w-16 h-16 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500'>
+                                    <img className='w-10 h-10 object-contain' src={item.image} alt={item.speciality} />
                                 </div>
                                 
                                 <p className='text-center font-semibold text-sm mb-2'>{item.speciality}</p>
