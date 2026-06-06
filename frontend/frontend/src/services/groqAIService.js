@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "https://ai-manoyatra.onrender.com";
 
 export const groqAIService = {
   mentalHealthAssistant: async (message, agentType, onChunk) => {
