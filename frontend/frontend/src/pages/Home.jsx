@@ -12,16 +12,12 @@ const Home = () => {
   useEffect(() => {
     const token = localStorage.getItem("manoyatra_token")
     if (token) {
-      const dismissed = localStorage.getItem("manoyatra_popup_dismissed")
-      if (!dismissed) {
-        setShowPopup(true)
-      }
+      setShowPopup(true)
     }
   }, [])
 
   const dismissPopup = () => {
     setShowPopup(false)
-    localStorage.setItem("manoyatra_popup_dismissed", "true")
   }
 
   return (
@@ -32,8 +28,8 @@ const Home = () => {
       <Banner />
 
       {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn">
-          <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden animate-slideUp">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-600 to-emerald-600"></div>
             
             <button
