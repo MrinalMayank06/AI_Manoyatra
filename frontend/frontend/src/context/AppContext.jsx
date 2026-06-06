@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { assets, mentors } from "../assets/assets";
 
-export const APPContext = createContext();
+export const AppContext = createContext();
 
 export const AppContextProvider = (props) => {
     const currencySymbol = '₹'; // Indian Rupee
@@ -122,8 +122,8 @@ export const AppContextProvider = (props) => {
     };
 
     return (
-        <APPContext.Provider value={value}>
+        <AppContext.Provider value={value}>
             {props.children}
-        </APPContext.Provider>
+        </AppContext.Provider>
     );
 };
