@@ -6,14 +6,12 @@ const SpecialityMenu = () => {
     const navigate = useNavigate()
 
     const specialityColors = {
-        'Psychiatrist': 'from-purple-500 to-purple-600',
-        'Neurologist': 'from-blue-500 to-cyan-500',
-        'Psychologist': 'from-emerald-500 to-green-500',
-        'Counselor': 'from-amber-500 to-orange-500',
-        'Therapist': 'from-pink-500 to-rose-500',
-        'Neuropsychologist': 'from-indigo-500 to-blue-500',
-        'Addiction Specialist': 'from-red-500 to-orange-500',
-        'Trauma Specialist': 'from-gray-700 to-gray-800'
+        'Depression_Mentor': 'from-purple-500 to-purple-600',
+        'Subconscious_Mentor': 'from-pink-500 to-rose-500',
+        'Trauma_Specialist': 'from-gray-700 to-gray-800',
+        'Addiction_Mentor': 'from-red-500 to-orange-500',
+        'Anxiety_Stress_Mentor': 'from-blue-500 to-cyan-500',
+        'Depression_Specialist': 'from-emerald-500 to-green-500',
     }
 
     return (
@@ -31,7 +29,7 @@ const SpecialityMenu = () => {
                     </p>
                 </div>
 
-                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6'>
+                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6'>
                     {specialityData.map((item, index) => (
                         <div
                             onClick={() => {navigate(`/mentors/${item.speciality}`); scrollTo(0, 0)}}
@@ -43,10 +41,10 @@ const SpecialityMenu = () => {
                             
                             <div className='relative z-10'>
                                 <div className='w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500'>
-                                    <img className='w-10 h-10 filter brightness-0 invert' src={item.image} alt="" />
+                                    <img className='w-10 h-10 filter brightness-0 invert' src={item.image} alt={item.speciality} />
                                 </div>
                                 
-                                <p className='text-center font-semibold text-lg mb-2'>{item.speciality}</p>
+                                <p className='text-center font-semibold text-sm mb-2'>{item.speciality.replace(/_/g, ' ')}</p>
                                 <p className='text-white/80 text-xs text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                                     {index * 12 + 15}+ Experts
                                 </p>
