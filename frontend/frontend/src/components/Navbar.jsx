@@ -41,7 +41,23 @@ const Navbar = () => {
       />
       
       {token && (
-        <ul className="hidden md:flex items-center gap-4 lg:gap-6 font-medium">
+        <ul className="hidden md:flex items-center gap-3 lg:gap-4 font-medium">
+          <NavLink to="/manoai" className={({ isActive }) => 
+            `relative py-2.5 px-5 rounded-full transition-all duration-300 text-sm font-bold ${
+              isActive 
+                ? 'bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg shadow-blue-200 scale-105' 
+                : 'bg-gradient-to-r from-blue-600 to-emerald-600 text-white hover:shadow-lg hover:shadow-blue-200 hover:scale-105'
+            }`}>
+            <li className="flex items-center gap-1.5">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+              </svg>
+              MANO AI
+            </li>
+            <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
+              <span className="text-[10px] font-bold text-gray-900">AI</span>
+            </span>
+          </NavLink>
           <NavLink to="/" className={({ isActive }) => 
             `py-2 px-3 rounded-lg transition-all text-sm ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}>
             <li>HOME</li>
@@ -49,10 +65,6 @@ const Navbar = () => {
           <NavLink to="/mentors" className={({ isActive }) => 
             `py-2 px-3 rounded-lg transition-all text-sm ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}>
             <li>MENTORS</li>
-          </NavLink>
-          <NavLink to="/manoai" className={({ isActive }) => 
-            `py-2 px-3 rounded-lg transition-all text-sm ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}>
-            <li>MANO AI</li>
           </NavLink>
           <NavLink to="/about" className={({ isActive }) => 
             `py-2 px-3 rounded-lg transition-all text-sm ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}>
